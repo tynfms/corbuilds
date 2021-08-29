@@ -21,7 +21,7 @@ struct Line {
 			A = B = C = 0.;
 		}
 		else if (P.y != Q.y) A = 1., B = (P.x - Q.x) / (Q.y - P.y), C = (P.x * Q.y - P.y * Q.x) / (P.y - Q.y);
-		else A = 0., B = 0., C = P.y;
+		else A = 0., B = -1., C = P.y;
 	}
 
 	bool operator == (const Line &l1) const {

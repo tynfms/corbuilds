@@ -5,6 +5,10 @@
 
 struct Point {
 	double x, y;
+
+	Point () {
+		x = y = 0.;
+	}
 	
 	Point (double x_, double y_) {
 		x = x_, y = y_;

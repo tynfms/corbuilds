@@ -16,7 +16,7 @@ inline double Dist(const Point &P, const Line &l) {
 
 // 等分线段
 inline Point PointDivision(const Point &A, const Point &B, double x = 1., double y = 1.) {
-	return Point((A.x * x + B.x * y) / (x + y), (A.y * x + B.y * y) / (x + y));
+	return Point((A.x * y + B.x * x) / (x + y), (A.y * y + B.y * x) / (x + y));
 }
 
 // P作到直线l的垂足
@@ -35,8 +35,10 @@ inline Point OppositePoint(const Point &P, const Line &l) {
 				);
 }
 
-inline double XKnown(const Line &l, const double &x) { return - (l.A * x + l.C) / l.B; } // 在直线l上横坐标为x的点
-inline double YKnown(const Line &l, const double &y) { return - (l.B * y + l.C) / l.A; } // 在直线l上纵坐标为y的点
+inline double DX(const Line &l, const double &x) { return - (l.A * x + l.C) / l.B; } // 在直线l上横坐标为x的点
+inline double DY(const Line &l, const double &y) { return - (l.B * y + l.C) / l.A; } // 在直线l上纵坐标为y的点
+inline Point PX(const Line &l, const double &x) { return Point(x, DX(l, x)); }
+inline Point PY(const Line &l, const double &y) { return Point(DY(l, y), y); }
 
 // l关于l0的对称直线
 inline Line OppositeLine(const Line &l, const Line &l0) {
